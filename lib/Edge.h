@@ -23,7 +23,7 @@ private:
 
 public:
   Edge(Node * src, Node * dst, std::string label = "");
-  Edge(Node * src, Node * dst, const HtmlString &label = HtmlString(""));
+  Edge(Node * src, Node * dst, const HtmlString &label);
 
   virtual ~Edge() {};
 

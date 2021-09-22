@@ -16,8 +16,8 @@ public:
     _attributes(ClusterAttributeSet()) {
   }
 
-  Cluster(const std::string& id, IdManager* idManager, bool isDigraph = false,
-    const HtmlString &label = HtmlString("")) : Graph(idManager, isDigraph, label, id),
+  Cluster(const std::string& id, IdManager* idManager, bool isDigraph,
+    const HtmlString &label) : Graph(idManager, isDigraph, label, id),
     _attributes(ClusterAttributeSet()) {
   }
 

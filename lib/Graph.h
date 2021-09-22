@@ -56,7 +56,7 @@ public:
     Graph(idManager, isDigraph, label, false, id)
   {}
 
-  Graph(IdManager* idManager, bool isDigraph = false, const HtmlString &label = HtmlString(""), std::string id = "somegraph") :
+  Graph(IdManager* idManager, bool isDigraph, const HtmlString &label, std::string id = "somegraph") :
     Graph(idManager, isDigraph, static_cast<std::string>(label), true, id)
   {}
 

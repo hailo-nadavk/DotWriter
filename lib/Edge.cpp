@@ -14,7 +14,7 @@ Edge::Edge(Node * src, Node * dst, std::string label) :
   Edge(src, dst, label, false)
 {}
 
-Edge::Edge(Node * src, Node * dst, const HtmlString &label = HtmlString("")) :
+Edge::Edge(Node * src, Node * dst, const HtmlString &label) :
   Edge(src, dst, static_cast<std::string>(label), true)
 {}
 

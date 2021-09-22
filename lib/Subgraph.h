@@ -24,7 +24,7 @@ public:
   }
 
   Subgraph(const std::string& id, IdManager* idManager, bool isDigraph,
-           const HtmlString &label = HtmlString("")) :
+           const HtmlString &label) :
     Graph(idManager, isDigraph, label, id),
     _attributes(SubgraphAttributeSet())
   {}

@@ -29,7 +29,7 @@ public:
     Node(id, label, false)
   {}
   
-  Node(const std::string& id, const HtmlString &label = HtmlString("")) :
+  Node(const std::string& id, const HtmlString &label) :
     Node(id, static_cast<std::string>(label), true)
   {}
 
