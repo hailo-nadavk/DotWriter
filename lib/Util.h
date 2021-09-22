@@ -33,8 +33,8 @@ public:
 
   ~HtmlString() = default;
 
-  // Allow implicit conversion to std::string
-  operator std::string() const { return _s; }
+  // Allow explicit conversion to std::string
+  explicit operator std::string() const { return _s; }
 
 private:
   const std::string _s;
