@@ -81,6 +81,7 @@ public:
    */
   Subgraph* AddSubgraph(const std::string& label = "");
   Subgraph* AddSubgraph(const std::string& label, const std::string& id);
+  Subgraph* AddSubgraph(const HtmlString& label);
   Subgraph* AddSubgraph(const HtmlString& label, const std::string& id);
 
   /**
@@ -93,6 +94,7 @@ public:
    */
   Cluster* AddCluster(const std::string& label = "");
   Cluster* AddCluster(const std::string& label, const std::string& id);
+  Cluster* AddCluster(const HtmlString& label);
   Cluster* AddCluster(const HtmlString& label, const std::string& id);
 
   /**
@@ -111,6 +113,7 @@ public:
    */
   Node* AddNode(const std::string& label);
   Node* AddNode(const std::string& label, const std::string& id);
+  Node* AddNode(const HtmlString& label);
   Node* AddNode(const HtmlString& label, const std::string& id);
 
   /**

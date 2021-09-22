@@ -46,6 +46,13 @@ Subgraph* Graph::AddSubgraph(const std::string& label, const std::string& id) {
   return sg;
 }
 
+Subgraph* Graph::AddSubgraph(const HtmlString& label) {
+  Subgraph* sg = new Subgraph(_idManager->GetSubgraphId(), _idManager,
+    IsDigraph(), label);
+  _subgraphs.push_back(sg);
+  return sg;
+}
+
 Subgraph* Graph::AddSubgraph(const HtmlString& label, const std::string& id) {
   std::string sanitizedId = _idManager->ValidateCustomId(id);
   Subgraph* sg = new Subgraph(sanitizedId, _idManager, IsDigraph(), label);
@@ -73,6 +80,13 @@ Cluster* Graph::AddCluster(const std::string& label) {
 Cluster* Graph::AddCluster(const std::string& label, const std::string& id) {
   std::string sanitizedId = _idManager->ValidateCustomClusterId(id);
   Cluster* cluster = new Cluster(sanitizedId, _idManager, IsDigraph(), label);
+  _clusters.push_back(cluster);
+  return cluster;
+}
+
+Cluster* Graph::AddCluster(const HtmlString& label) {
+  Cluster* cluster = new Cluster(_idManager->GetClusterId(), _idManager,
+    IsDigraph(), label);
   _clusters.push_back(cluster);
   return cluster;
 }
@@ -108,6 +122,12 @@ Node* Graph::AddNode(const std::string& label) {
 
 Node* Graph::AddNode(const std::string& label, const std::string& id) {
   Node* node = new Node(_idManager->ValidateCustomId(id), label);
+  _nodes.push_back(node);
+  return node;
+}
+
+Node* Graph::AddNode(const HtmlString& label) {
+  Node* node = new Node(_idManager->GetNodeId(), label);
   _nodes.push_back(node);
   return node;
 }
