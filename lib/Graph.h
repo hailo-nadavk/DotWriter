@@ -81,6 +81,7 @@ public:
    */
   Subgraph* AddSubgraph(const std::string& label = "");
   Subgraph* AddSubgraph(const std::string& label, const std::string& id);
+  Subgraph* AddSubgraph(const HtmlString& label, const std::string& id);
 
   /**
    * Remove the given subgraph from this graph.
@@ -92,6 +93,7 @@ public:
    */
   Cluster* AddCluster(const std::string& label = "");
   Cluster* AddCluster(const std::string& label, const std::string& id);
+  Cluster* AddCluster(const HtmlString& label, const std::string& id);
 
   /**
    * Remove the given cluster from this graph.
@@ -109,6 +111,7 @@ public:
    */
   Node* AddNode(const std::string& label);
   Node* AddNode(const std::string& label, const std::string& id);
+  Node* AddNode(const HtmlString& label, const std::string& id);
 
   /**
    * Removes the node from the graph.
@@ -126,6 +129,7 @@ public:
    */
   Edge* AddEdge(Node* src, Node* dst);
   Edge* AddEdge(Node* src, Node* dst, const std::string& label);
+  Edge* AddEdge(Node* src, Node* dst, const HtmlString& label);
 
   /**
    * Removes the edge from the graph. Note that this also deletes the GEdge
