@@ -15,6 +15,7 @@
 #include "AttributeSet.h"
 #include "IdManager.h"
 #include "Idable.h"
+#include "Util.h"
 
 namespace DotWriter {
 
@@ -32,6 +33,7 @@ protected:
   IdManager* _idManager;   // Managed by root graph.
   // I use vector since output order matters.
   std::string _label;
+  bool _is_html_label;
   std::vector<Node *> _nodes;
   std::vector<Edge *> _edges;
   std::vector<Subgraph *> _subgraphs;
@@ -50,14 +52,13 @@ public:
    * - label: Text that is printed somewhere adjacent to the graph.
    * - id: Custom id (optional)
    */
-  Graph(IdManager* idManager, bool isDigraph = false, std::string label = "",
-    std::string id = "somegraph") :
-    Idable(idManager->ValidateCustomId(id)),
-    _isDigraph(isDigraph), _idManager(idManager),
-    _label(label),
-    _defaultNodeAttributes(NodeAttributeSet()),
-    _defaultEdgeAttributes(EdgeAttributeSet()) {
-  }
+  Graph(IdManager* idManager, bool isDigraph = false, std::string label = "", std::string id = "somegraph") :
+    Graph(idManager, isDigraph, label, false, id)
+  {}
+
+  Graph(IdManager* idManager, bool isDigraph = false, const HtmlString &label = HtmlString(""), std::string id = "somegraph") :
+    Graph(idManager, isDigraph, static_cast<std::string>(label), true, id)
+  {}
 
   virtual ~Graph();
 
@@ -145,6 +146,16 @@ public:
   virtual void Print(std::ostream& out, unsigned tabDepth) = 0;
 
 protected:
+  Graph(IdManager* idManager, bool isDigraph, std::string label, bool is_html_label, std::string id) :
+    Idable(idManager->ValidateCustomId(id)),
+    _isDigraph(isDigraph),
+    _idManager(idManager),
+    _label(label),
+    _is_html_label(is_html_label),
+    _defaultNodeAttributes(NodeAttributeSet()),
+    _defaultEdgeAttributes(EdgeAttributeSet())
+  {}
+
   /**
    * Prints nodes, edges, cluster subgraphs, and subgraphs.
    */
